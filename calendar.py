@@ -1,5 +1,4 @@
 import turtle
-import calendar as cal
 
 year = 2023
 first_day = 1  # 0 for Sunday, 1 for Monday, etc.
@@ -16,12 +15,14 @@ def draw_grid_box(content):
         turtle.right(90)
     turtle.end_fill()
     turtle.penup()
-    turtle.goto(turtle.xcor() - 20, turtle.
+    turtle.goto(turtle.xcor() - 20, turtle.ycor() - 20)
     turtle.write(content, align='center', font=('Arial', 12, 'normal'))
     turtle.goto(turtle.xcor() + 20, turtle.ycor() + 20)
 
+month_lengths = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
 for month in range(1, 13):
-    daysOfMonth = cal.monthrange(year, month)[1]
+    daysOfMonth = month_lengths[month]
     month_name = f"Month #{month}"
     
     for _ in range(4):
