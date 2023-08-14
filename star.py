@@ -6,11 +6,8 @@ def print_pattern(n):
             print('*' * i)
         n -= 1
 
-try:
-    num = int(input("Enter an integer greater than or equal to 1: "))
-    if num >= 1:
-        print_pattern(num)
-    else:
-        print("Please enter a valid integer greater than or equal to 1.")
-except ValueError:
-    print("Invalid input. Please enter a valid integer.")
+num = int(input("Enter an integer greater than or equal to 1: "))
+if num >= 1:
+    print_pattern(num)
+else:
+    print("Please enter a valid integer greater than or equal to 1.")
