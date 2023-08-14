@@ -1,56 +1,48 @@
 import turtle
 
 year = 2023
-first_day = 1  # 0 for Sunday, 1 for Monday, etc.
+day = 0  # Assuming 0 for Sunday
 
-turtle.speed(0)
-turtle.penup()
-turtle.goto(-250, 250)
-
-def draw_grid_box(content, width=40, height=40):
-    turtle.pendown()
-    for _ in range(4):
-        turtle.forward(width)
-        turtle.right(90)
+days_of_month = 0
+for month in range(1, 13):
+    days_of_week = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    days_of_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    
+    # Draw month and year header
     turtle.penup()
-    turtle.goto(turtle.xcor() - width / 2, turtle.ycor() - height / 2)
-    turtle.write(content)
-    turtle.goto(turtle.xcor() + width, turtle.ycor() + height)
-
-month = 1
-month_lengths = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
-while month <= 12:
-    daysOfMonth = month_lengths[month]
-    month_name = f"Month #{month}"
+    turtle.goto(-300, 200)
+    turtle.pendown()
+    turtle.write(f"{month}/{year}", align="center", font=("Arial", 14, "normal"))
     
-    for _ in range(7):  # Adjust for alignment
-        draw_grid_box('')
-    
-    turtle.goto(-250, turtle.ycor() - 40)
-    draw_grid_box(month_name, width=280, height=40)
-    
-    for day_label in days_labels:
-        draw_grid_box(day_label)
-    
-    i = 0
-    while i < first_day:
-        draw_grid_box('')
-        i += 1
+    # Draw days of the week header
+    turtle.penup()
+    turtle.goto(-300, 150)
+    turtle.pendown()
+    for day_of_week in days_of_week:
+        turtle.forward(60)
+        turtle.write(day_of_week, align="center", font=("Arial", 12, "normal"))
 
-    day = 1
-    while day <= daysOfMonth:
-        if (day + first_day - 1) % 7 == 0:
-            turtle.goto(-250, turtle.ycor() - 40)
-        draw_grid_box(str(day))
-        day += 1
+    # Position for drawing dates
+    turtle.penup()
+    turtle.goto(-300, 120)
+    turtle.pendown()
 
-    turtle.goto(-250, turtle.ycor() - 40)
-    turtle.goto(-250, turtle.ycor() - 20)
+    # Offset for the starting day of the month
+    for _ in range(day):
+        turtle.forward(60)
 
-    first_day = (first_day + daysOfMonth) % 7
-    month += 1
+    # Draw dates in grid boxes
+    for date in range(1, days_of_month[month - 1] + 1):
+        if date < 10:
+            turtle.write(f"  {date}", align="center", font=("Arial", 12, "normal"))
+        else:
+            turtle.write(f" {date}", align="center", font=("Arial", 12, "normal"))
+        
+        if (day + date) % 7 == 0:
+            turtle.penup()
+            turtle.goto(-300, turtle.ycor() - 40)
+            turtle.pendown()
 
-# Keep the Turtle graphics window open until it's clicked
+    day = (day + days_of_month[month - 1]) % 7
+
 turtle.done()
