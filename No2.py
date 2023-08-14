@@ -12,7 +12,7 @@ for month in range(1, 13):
     turtle.penup()
     turtle.goto(-300, 200)
     turtle.pendown()
-    turtle.write(f"{month}/{year}", align="center", font=("Arial", 14, "normal"))
+    turtle.write(f"{month}/{year}")
     
     # Draw days of the week header
     turtle.penup()
@@ -20,7 +20,7 @@ for month in range(1, 13):
     turtle.pendown()
     for day_of_week in days_of_week:
         turtle.forward(60)
-        turtle.write(day_of_week, align="center", font=("Arial", 12, "normal"))
+        turtle.write(day_of_week)
 
     # Position for drawing dates
     turtle.penup()
@@ -34,9 +34,9 @@ for month in range(1, 13):
     # Draw dates in grid boxes
     for date in range(1, days_of_month[month - 1] + 1):
         if date < 10:
-            turtle.write(f"  {date}", align="center", font=("Arial", 12, "normal"))
+            turtle.write(f"  {date}")
         else:
-            turtle.write(f" {date}", align="center", font=("Arial", 12, "normal"))
+            turtle.write(f" {date}")
         
         if (day + date) % 7 == 0:
             turtle.penup()
