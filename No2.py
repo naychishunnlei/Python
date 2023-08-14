@@ -14,7 +14,7 @@ def draw_grid_box(content, width=40, height=40):
         turtle.right(90)
     turtle.penup()
     turtle.goto(turtle.xcor() - width / 2, turtle.ycor() - height / 2)
-    turtle.write(content, align='center')
+    turtle.write(content)
     turtle.goto(turtle.xcor() + width, turtle.ycor() + height)
 
 month = 1
