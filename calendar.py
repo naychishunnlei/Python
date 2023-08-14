@@ -16,7 +16,7 @@ def draw_grid_box(content):
         turtle.right(90)
     turtle.end_fill()
     turtle.penup()
-    turtle.goto(turtle.xcor() - 20, turtle.ycor() - 20)
+    turtle.goto(turtle.xcor() - 20, turtle.
     turtle.write(content, align='center', font=('Arial', 12, 'normal'))
     turtle.goto(turtle.xcor() + 20, turtle.ycor() + 20)
 
